@@ -24,4 +24,5 @@
 ## Why
 
 * looking for a new job soon, want to have a new project showcasing skills for tech I'm interested in working in
+* start simple, maybe move on to more complicated projects together
 
