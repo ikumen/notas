@@ -107,5 +107,7 @@ For much later, use OAuth, Github at a minimum
 
 ## Why
 
-* looking for a new job soon, want to have a new project showcasing skills for tech I'm interested in working in
+* make friends, learn from and help others, learn about community building
+* learn to host a project
 * start simple, maybe move on to more complicated projects together
+* showcase skills for future employer
