@@ -12,22 +12,37 @@
 * (future) export/archive to github gist, dropbox, download?
 * (future) think about OT (operational transformations) for colab editing
 
+### App architecture
 
-#### Data model for notes
+Just an idea to get us started, lets iterate and evolve/refine it.
+
+```
+backend/
+   app/
+      templates/
+      datastore.py     # encapsulate calls to underlying datastore, can get fancy and make it interface with concrete impl for different databases (crazy talk, this is not Java)
+      routes.py        # route def and mappings, might need to break out. need one set for spa and api
+      service.py       # manages interactions between route handler to underlying datastore or some other business logic
+      settings.py      # self expl, let's model after 12-factor, all config from environment vars
+   main.py
+```
+
+
+### Data model for notes
 
 Maybe start with just using dictionary? at a minimum we should capture:
 
-Note
+**Note**
  - id (use mongo id or self generate???)
  - user ?? maybe just a str for now until we hook in Auth/user
  - title: str (required??)
  - content: str = None
  - ispublic: bool = False (private by default)
  - tags: List[str]
- - category: str (just a path e.g, /courses/udacity/cloud-developer)
-  
+ - category: str (just a path e.g, /courses/udacity/cloud-developer)  
 
-#### Initial API
+
+### Initial API
 
 /notes         GET return list of all notes
 /notes/<id>    GET reutrn a note by id
@@ -36,7 +51,7 @@ Note
 /notes/<id>    DELETE delete a note
 /notes/search  GET search for notes (terms in query string)
 
-#### Authentication
+### Authentication
 
 For much later, use OAuth, Github at a minimum
 - for who ever is gonna work on it, take a [look at authlib](https://docs.authlib.org/en/stable/)
