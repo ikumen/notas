@@ -12,6 +12,17 @@
 * (future) export/archive to github gist, dropbox, download?
 * (future) think about OT (operational transformations) for colab editing
 
+#### Tech
+* Python backend (leaning toward [Starlette](https://www.starlette.io/) or Flask)
+* TypeScript (and JS) frontend (leaning toward [Svelte](https://svelte.dev), maybe Vue, React)
+* Azure (App Service, Functions, CosmosDB)
+* Redis for an inverted index implementation for simple search
+
+
+## How
+
+**I'm putting these out there to give us some direction, something concrete to discuss, I'm open to suggestions** 
+
 ### Frontend  app architecture
 
 Just a Svelte SPA that loads CodeMirror instance for editing. Kinda hacked together as I'm learning svelte. I'm up for starting refactoring/starting over if some one more knowledgeable.
@@ -93,14 +104,6 @@ For much later, use OAuth, Github at a minimum
 - for who ever is gonna work on it, take a [look at authlib](https://docs.authlib.org/en/stable/)
 - I've implemented 
 
-## How
-
-**I'm putting these out there to give us some direction, something concrete to discuss, I'm open to suggestions** 
-
-* Python backend (leaning toward [Starlette](https://www.starlette.io/) or Flask)
-* TypeScript (and JS) frontend (leaning toward [Svelte](https://svelte.dev), maybe Vue, React)
-* Azure (App Service, Functions, CosmosDB)
-* Redis for an inverted index implementation for simple search
 
 ## Why
 
