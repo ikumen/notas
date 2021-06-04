@@ -27,6 +27,10 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# frontend packaging
+**/node_modules
+**/package-lock.json
+
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -127,3 +131,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# frontend build artifacts
+frontend/public/static/bundle*
+backend/app/templates/static/*
+backend/app/templates/*.html
