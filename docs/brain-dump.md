@@ -12,11 +12,47 @@
 * (future) export/archive to github gist, dropbox, download?
 * (future) think about OT (operational transformations) for colab editing
 
-### App architecture
+### Frontend  app architecture
+
+Just a Svelte SPA that loads CodeMirror instance for editing. Kinda hacked together as I'm learning svelte. I'm up for starting refactoring/starting over if some one more knowledgeable.
+
+```shell
+frontend/
+   app/
+      components/           
+         codemirror.css        # styling for codemirror
+         Content.svelte        # content view component, renders markdown 
+         ContentEditor.svelte  # component that loads codemirror for editing
+         Editor.svelte         
+         LastUpdated.svelte    
+         Mode.svelte           # component for toggling between edit/split/preview
+         note.css              
+         NoteList.svelte       # list of notes component
+         PageLayout.svelte
+         PrivacyToggle.svlete  
+         Tags.svelte           # tags view component
+         TagsEditor.svelte     # tags editing component
+         Title.svelte          # title view component
+         TitleEditor.svelte    # title editing component
+         Viewer.svelte         # displays Title, Tags and Content
+      pages/                   # Page/views within our SPA
+      services/
+          NoteService.ts       # handles request to backend /api/notes
+      App.svelte               # main app entry point
+      helpers.ts               # utils
+      index.ts                 # loads the app entry point
+      note.ts                  # type def for a Note
+   public/
+   package.json
+   rollup.config.js            # like webpack, build and bundles svelte components
+   tsconfig.json               # config for TypeScript use
+```
+
+### Backend app architecture
 
 Just an idea to get us started, lets iterate and evolve/refine it.
 
-```
+```shell
 backend/
    app/
       templates/
@@ -44,12 +80,12 @@ Maybe start with just using dictionary? at a minimum we should capture:
 
 ### Initial API
 
-/notes         GET return list of all notes
-/notes/<id>    GET reutrn a note by id
-/notes         POST create a note
-/notes/<id>    PUT update a note
-/notes/<id>    DELETE delete a note
-/notes/search  GET search for notes (terms in query string)
+/api/notes         GET return list of all notes
+/api/notes/<id>    GET reutrn a note by id
+/api/notes         POST create a note
+/api/notes/<id>    PUT update a note
+/api/notes/<id>    DELETE delete a note
+/api/notes/search  GET search for notes (terms in query string)
 
 ### Authentication
 
