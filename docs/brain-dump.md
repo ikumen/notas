@@ -12,9 +12,39 @@
 * (future) export/archive to github gist, dropbox, download?
 * (future) think about OT (operational transformations) for colab editing
 
+
+#### Data model for notes
+
+Maybe start with just using dictionary? at a minimum we should capture:
+
+Note
+ - id (use mongo id or self generate???)
+ - user ?? maybe just a str for now until we hook in Auth/user
+ - title: str (required??)
+ - content: str = None
+ - ispublic: bool = False (private by default)
+ - tags: List[str]
+ - category: str (just a path e.g, /courses/udacity/cloud-developer)
+  
+
+#### Initial API
+
+/notes         GET return list of all notes
+/notes/<id>    GET reutrn a note by id
+/notes         POST create a note
+/notes/<id>    PUT update a note
+/notes/<id>    DELETE delete a note
+/notes/search  GET search for notes (terms in query string)
+
+#### Authentication
+
+For much later, use OAuth, Github at a minimum
+- for who ever is gonna work on it, take a [look at authlib](https://docs.authlib.org/en/stable/)
+- I've implemented 
+
 ## How
 
-**I'm putting these out there to give us some direction, something concrete to discuss. Nothing is set in stone, I'm open to suggestions** 
+**I'm putting these out there to give us some direction, something concrete to discuss, I'm open to suggestions** 
 
 * Python backend (leaning toward [Starlette](https://www.starlette.io/) or Flask)
 * TypeScript (and JS) frontend (leaning toward [Svelte](https://svelte.dev), maybe Vue, React)
