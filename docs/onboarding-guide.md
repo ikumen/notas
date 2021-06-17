@@ -1,6 +1,6 @@
-Development notes for Python based projects.
-
 ## Python Project Setup
+
+Guide for setting up Python base projects
 
 ### Requirements
 
@@ -57,3 +57,56 @@ Next we use `pip` to install dependencies. `pip` and `pip freeze`, are fine for 
 ```
 
 Finally, make sure you have a [Python specific](https://github.com/github/gitignore/blob/master/Python.gitignore) [`.gitignore`](https://docs.github.com/en/free-pro-team@latest/github/using-git/ignoring-files) for your project.
+
+## Frontend Setup
+
+This guide describes the frontend [Svelte](https://svelte.dev/)/[TypeScript](https://www.typescriptlang.org/) based [single-page app](https://en.wikipedia.org/wiki/Single-page_application) in terms of the structure, development flow and build. 
+
+### File Structure
+
+At it's base, this is the file structure for the frontend app.
+
+```
+frontend
+├── app
+│   ├── App.svelte
+│   └── index.ts
+├── package.json
+├── public
+│   ├── index.html
+│   └── static
+│       ├── bundle.css     (auto-generated)
+│       ├── bundle.js      (auto-generated)
+│       ├── bundle.js.map  (auto-generated)
+│       ├── favicon.ico
+│       └── global.css
+├── rollup.config.js
+└── tsconfig.json
+```
+
+- `app` is where the application logic resides, Svelte components and TypeScript files
+  - `index.ts` the main entry into the app
+- `public` is where all static files and auto-generated static files will reside
+  - `static` all js, css files
+  - `index.html` the main container for the single-page app
+- `package.json` [npm package manager](https://nodejs.org/en/knowledge/getting-started/npm/what-is-the-file-package-json/)
+- `rollup.config.js` [rollup.js](https://rollupjs.org/guide/en/) module bundler (e.g, webpack)
+- `tsconfig.json` Typescript [compiler configurations](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
+
+### Build 
+
+Our frontend application is just an HTML page that executes some sourced in JavaScript code. Except our JavaScript code starts off as Svelte and TypeScript code, and is then transpiled (TypeScript -> JavaScript), then compiled (Svelte -> JavaScript), and the output is bundled and dependencies to into a single file (`bundle.js`). That single `bundle.js` is then source in from our `index.html`.
+
+To build the frontend for deployment you can use:
+
+```
+npm run build --prefix frontend
+```
+_Note: in a production environment, we may then copy the contents of `public` and auto-generated `bundle.js` to a target as part of the deployment process._
+
+To build and serve the frontend while in development (e.g, watch for source changes and rebuild)
+
+```
+npm run dev --prefix frontend
+```
+
