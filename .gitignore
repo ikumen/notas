@@ -136,3 +136,6 @@ dmypy.json
 frontend/public/static/bundle*
 backend/app/templates/static/*
 backend/app/templates/*.html
+
+# temp files
+.data/

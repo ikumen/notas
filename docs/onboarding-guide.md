@@ -1,4 +1,4 @@
-## Python Project Setup
+## Python Setup
 
 Guide for setting up Python base projects
 
@@ -58,6 +58,10 @@ Next we use `pip` to install dependencies. `pip` and `pip freeze`, are fine for 
 
 Finally, make sure you have a [Python specific](https://github.com/github/gitignore/blob/master/Python.gitignore) [`.gitignore`](https://docs.github.com/en/free-pro-team@latest/github/using-git/ignoring-files) for your project.
 
+## Backend Setup
+
+
+
 ## Frontend Setup
 
 This guide describes the frontend [Svelte](https://svelte.dev/)/[TypeScript](https://www.typescriptlang.org/) based [single-page app](https://en.wikipedia.org/wiki/Single-page_application) in terms of the structure, development flow and build. 
@@ -109,4 +113,17 @@ To build and serve the frontend while in development (e.g, watch for source chan
 ```
 npm run dev --prefix frontend
 ```
+
+## Localized Services
+
+The `notas` application will use [Cosmos DB (Mongo interface)](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction) as the primary storage and [Redis](https://redis.io/) as caching/index. During development, these services will be made available locally via [docker](https://docs.docker.com/compose/) images, all configured in [docker-compose.yaml](../docker-compose.yaml). 
+
+Locally, we'll use a containerized Mongo Database vs the Cosmos DB since the latter is [only available on Windows or on Linux with limit functionality](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator?tabs=ssl-netstd21#run-on-linux-macos). 
+
+To start the localized Mongo Database and Redis server
+
+```shell
+docker-compose up
+```
+
 
