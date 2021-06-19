@@ -23,41 +23,9 @@
 
 **I'm putting these out there to give us some direction, something concrete to discuss, I'm open to suggestions** 
 
-### Frontend  app architecture
+### Frontend app architecture
 
-Just a Svelte SPA that loads CodeMirror instance for editing. Kinda hacked together as I'm learning svelte. I'm up for starting refactoring/starting over if some one more knowledgeable.
-
-```shell
-frontend/
-   app/
-      components/           
-         codemirror.css        # styling for codemirror
-         Content.svelte        # content view component, renders markdown 
-         ContentEditor.svelte  # component that loads codemirror for editing
-         Editor.svelte         
-         LastUpdated.svelte    
-         Mode.svelte           # component for toggling between edit/split/preview
-         note.css              
-         NoteList.svelte       # list of notes component
-         PageLayout.svelte
-         PrivacyToggle.svlete  
-         Tags.svelte           # tags view component
-         TagsEditor.svelte     # tags editing component
-         Title.svelte          # title view component
-         TitleEditor.svelte    # title editing component
-         Viewer.svelte         # displays Title, Tags and Content
-      pages/                   # Page/views within our SPA
-      services/
-          NoteService.ts       # handles request to backend /api/notes
-      App.svelte               # main app entry point
-      helpers.ts               # utils
-      index.ts                 # loads the app entry point
-      note.ts                  # type def for a Note
-   public/
-   package.json
-   rollup.config.js            # like webpack, build and bundles svelte components
-   tsconfig.json               # config for TypeScript use
-```
+- [frontend setup](./onboarding-guide.md#frontend-setup)
 
 ### Backend app architecture
 
