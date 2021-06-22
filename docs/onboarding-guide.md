@@ -53,7 +53,28 @@ Next we use `pip` to install dependencies. `pip` and `pip freeze`, are fine for 
 ```shell
 (.venv) pip install pip-tools             # (contains pip-compile)
 (.venv) pip-compile requirements.in       # (generates requirements.txt)
-(.venv) pip install -r requirements.txt   # (both requirements.in and requirements.txt are checked in source control)
+(.venv) pip-sync requirements.txt         # install/syncs all the dependencies into our virtual env
+```
+_Note: both requirements.in and requirements.txt are checked in source control_
+
+#### Layered Dependencies
+
+If you need additional dependencies for different environments (e.g, pytest in dev/test), then you can [create layered requirements](https://github.com/jazzband/pip-tools#workflow-for-layered-requirements) to manage this requirement.
+
+For example, in addition to the `requirements.in` above, we also need `pytest` and `requests` lib in development and testing environments. Create an `requirements-test.in` layered on top of `requirements.in` dependencies.
+
+```shell
+# requirements-test.in
+-c requirements.txt
+pytest
+requests
+```
+
+Then compile the dev/test specific `requirements-test.in`, this will produce a `requirements-test.txt`, then `pip-sync` to install.
+
+```shell
+(.venv) pip-compile requirements-test.in
+(.venv) pip-sync requirements.txt requirements-test.txt
 ```
 
 Finally, make sure you have a [Python specific](https://github.com/github/gitignore/blob/master/Python.gitignore) [`.gitignore`](https://docs.github.com/en/free-pro-team@latest/github/using-git/ignoring-files) for your project.
@@ -120,10 +141,24 @@ The `notas` application will use [Cosmos DB (Mongo interface)](https://docs.micr
 
 Locally, we'll use a containerized Mongo Database vs the Cosmos DB since the latter is [only available on Windows or on Linux with limit functionality](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator?tabs=ssl-netstd21#run-on-linux-macos). 
 
-To start the localized Mongo Database and Redis server
+To start the localized Mongo Database and Redis server. 
 
 ```shell
+# start all services defined in docker-compose.yaml
 docker-compose up
+
+# start mongo db
+docker-compose up mongodb
+
+# start redis
+docker-compose up redis
 ```
+
+On Windows and MacOS, docker compose is included in docker desktop, just run compose from the docker cli.
+
+```shell
+docker compose up
+```
+
 
 

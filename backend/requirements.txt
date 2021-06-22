@@ -20,7 +20,7 @@ markupsafe==2.0.1
     # via jinja2
 pydantic==1.8.2
     # via -r backend/requirements.in
-python-dotenv==0.17.1
+python-dotenv==0.18.0
     # via
     #   -r backend/requirements.in
     #   uvicorn

@@ -1,0 +1,4 @@
+# From requirements.in
+-c requirements.txt
+pytest
+requests

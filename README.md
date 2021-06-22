@@ -32,7 +32,7 @@ Here's a very high level overview of the system architecture.
 * [npm](https://www.npmjs.com/) for JavaScript dependency management
 * [docker](https://docs.docker.com/), [docker-compose](https://docs.docker.com/compose/) for container management
 
-### Install, Build and Start
+### Install, Build, Start and Test
 
 Make sure you are at the project root directory and prerequisites above are satisfied.
 
@@ -67,24 +67,23 @@ python -m venv .venv
 # Activate virtualenv
 source .venv/bin/activate
 
-# Install pip-tools
+# Install pip-tools, and dependencies
 (.venv) pip install pip-tools
-
-# If requirements.txt needs to be compiled
-(.venv) pip-compile backend/requirements.in
-
-# Install dependencies
-(.venv) pip install -r backend/requirements.txt
+(.venv) pip-compile backend/requirements.in      # generates backend/requirements.txt if it didn't exists
+(.venv) pip-compile backend/requirements-dev.in  # generates backend/requirements-dev.txt
+(.venv) pip-sync backend/requirements.txt backend/requirements-dev.txt
 
 # Start the server
-(.venv) python backend/main.py
+(.venv) python -m backend.application
 ```
 
 The backend server will start at http://localhost:5000
 
+#### Running Tests
 
-
-
+```shell
+(.venv) python -m pytest backend/tests
+```
 
 
 
