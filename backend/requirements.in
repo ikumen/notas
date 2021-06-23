@@ -1,6 +1,7 @@
 aiofiles
 jinja2
 pydantic
+pymongo
 python-dotenv
 starlette
 uvicorn[standard]

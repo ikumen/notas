@@ -20,6 +20,8 @@ markupsafe==2.0.1
     # via jinja2
 pydantic==1.8.2
     # via -r backend/requirements.in
+pymongo==3.11.4
+    # via -r backend/requirements.in
 python-dotenv==0.18.0
     # via
     #   -r backend/requirements.in
