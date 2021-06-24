@@ -4,7 +4,7 @@ import os
 
 from pathlib import Path
 from pymongo import MongoClient
-from pymongo.database import Database
+from pymongo.database import Database, Collection
 from starlette.testclient import TestClient
 from backend import application
 
@@ -18,13 +18,13 @@ def app_client():
     return TestClient(application.app)
 
 @pytest.fixture
-def mongo_db_client():
+def mongo_db_client() -> Database:
     mongo_client = MongoClient(os.environ['MONGO_URI'])
     db = mongo_client.get_database(os.environ['MONGO_DB_NAME'])
     return db
 
 @pytest.fixture
-def notes_collection(mongo_db_client: Database):
+def notes_collection(mongo_db_client: Database) -> Collection:
     return mongo_db_client.get_collection('notes')
 
 @pytest.fixture(autouse=True)

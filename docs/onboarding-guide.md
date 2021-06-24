@@ -61,7 +61,7 @@ _Note: both requirements.in and requirements.txt are checked in source control_
 
 If you need additional dependencies for different environments (e.g, pytest in dev/test), then you can [create layered requirements](https://github.com/jazzband/pip-tools#workflow-for-layered-requirements) to manage this requirement.
 
-For example, in addition to the `requirements.in` above, we also need `pytest` and `requests` lib in development and testing environments. Create an `requirements-test.in` layered on top of `requirements.in` dependencies.
+For example, in addition to the `requirements.in` above, we also need `pytest` and `requests` lib in development and testing environments. Create an `requirements-dev.in` layered on top of `requirements.in` dependencies.
 
 ```shell
 # requirements-test.in
@@ -70,11 +70,11 @@ pytest
 requests
 ```
 
-Then compile the dev/test specific `requirements-test.in`, this will produce a `requirements-test.txt`, then `pip-sync` to install.
+Then compile the dev/test specific `requirements-dev.in`, this will produce a `requirements-dev.txt`, then `pip-sync` to install.
 
 ```shell
-(.venv) pip-compile requirements-test.in
-(.venv) pip-sync requirements.txt requirements-test.txt
+(.venv) pip-compile requirements-dev.in
+(.venv) pip-sync requirements.txt requirements-dev.txt
 ```
 
 Finally, make sure you have a [Python specific](https://github.com/github/gitignore/blob/master/Python.gitignore) [`.gitignore`](https://docs.github.com/en/free-pro-team@latest/github/using-git/ignoring-files) for your project.
