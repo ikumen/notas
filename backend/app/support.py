@@ -7,7 +7,7 @@ from starlette.responses import JSONResponse
 
 
 class CustomJSONEncoder(json.JSONEncoder):
-    """Custom JSONEncoder that serializes an ObjectId to a string.
+    """Custom JSONEncoder that serializes an ObjectId and datetime to a string.
     """
     def default(self, o: typing.Any) -> typing.Any:
         if isinstance(o, objectid.ObjectId):
@@ -21,8 +21,8 @@ custom_jsonencoder = CustomJSONEncoder()
 
 
 class ApiJSONResponse(JSONResponse):
-    """Custon JSONResponse that can properly serialize content that
-    contain ObjectIds.
+    """Custon JSONResponse that can properly serialize objects using the
+    CustomJSONEncoder, used mainly api request handlers.
     """
     def render(self, content: typing.Any) -> bytes:
         return custom_jsonencoder.encode(content).encode('utf-8')
