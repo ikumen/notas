@@ -17,5 +17,6 @@ async def index(req):
 
 # Handler to route mappings
 routes = [
+    Route('/static', endpoint=static),
     Route('/{path:path}', endpoint=index)
 ]

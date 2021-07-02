@@ -1,4 +1,9 @@
 <script>
+  import { Router, Route } from "svelte-routing";
+  import HomePage from "./pages/HomePage.svelte";
+
 </script>
 
-<h1>Notas</h1>
+<Router>
+  <Route path="*" component={HomePage} />
+</Router>
