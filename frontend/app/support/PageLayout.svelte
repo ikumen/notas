@@ -4,12 +4,13 @@
 </script>
 
 <style>
-  .container {
+  .layout {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-content: stretch;
-    height: calc(100vh - 60px);
+    /* height: calc(100vh - 60px); */
+    height: 100%;
   }
 
   header {
@@ -18,7 +19,9 @@
   }
 
   main {
-    padding-top: 60px;
+    flex: 1;
+    overflow: auto;
+    /* padding-top: 60px; */
     display: flex;
     flex-direction: column;
     background-color: tan;
@@ -30,10 +33,10 @@
   }
 </style>
 
-<div class="container">
+<div class="layout">
   {#if enableHeader}
   <header>
-    header
+    notas
   </header> 
   {/if}
 
