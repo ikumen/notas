@@ -65,6 +65,7 @@
   <textarea id="text"
     bind:this={textAreaEl}
     bind:value={content}
+    placeholder="Write your note here..."
     onInput="this.parentNode.dataset.replicatedValue = this.value" 
     name="text" />
 </div>
