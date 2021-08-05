@@ -1,5 +1,19 @@
 ## 💡 **This page is just brain dump of raw ideas, feel free to add to it** 💡
 
+## Why
+
+After completing an Azure Developer course, I wanted to develop something more in depth using Azure services and fullstack development. Specifically demonstrate knowledge of:
+
+- Azure app service
+- Azure cosmosdb (specifically mongo interface)
+- Azure functions
+- fullstack development
+  - python backend
+  - svelte frontend
+- oauth 
+- docker practice
+- ci practices
+
 ## What
 
 * markdown based note-taking web app
@@ -22,6 +36,30 @@
 ## How
 
 **I'm putting these out there to give us some direction, something concrete to discuss, I'm open to suggestions** 
+
+The app is a note taking app so the model revolves around the idea of a "note" and "user" that owns the note. We can:
+
+- register/create a user
+- create a note by a owner
+- edit a note by a owner
+- remove a note by a owner
+- list/search all notes for a user
+
+### Data model
+
+- user
+  - id: string (auto gen from mongo)
+  - name: string
+  - ???
+
+- note
+  - id: string
+  - user: string (id of user)
+  - title: string
+  - content: string (optional)
+  - ispublic: boolean (default false)
+  - tags: List[string] (optional)
+
 
 ### Frontend app architecture
 
