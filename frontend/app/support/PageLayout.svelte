@@ -43,16 +43,21 @@
     font-size: 1rem;
   }
   
-  .logo {
-    flex-grow: 1;
+  /* .logo {
+    flex-grow: 0;
   }
-  .logo .notas {
+  .logo  */
+  .notas {
+    flex-grow: 0;
     background-color: #000;
     color: #fff;
     font-size: 1.2rem;
     font-weight: 800;
-    padding: 6px 6px 4px;
+    padding: 6px;
     border-radius: 3px;
+    text-decoration: none;
+    margin: 0;
+    line-height: 1.6rem;
   }
 
   .hdr-left, .hdr-right {
@@ -69,9 +74,7 @@
 <div class="layout">
   {#if enableHeader}
   <header>
-    <div class="logo">
-      <a href="/" use:link><span class="notas">NOTAS</span></a> 
-    </div>
+    <a class="notas" href="/" use:link>NOTAS</a> 
     <div class="hdr-left">
       <slot name="hdr-left"></slot>
     </div>

@@ -1,7 +1,7 @@
 <script>
   import PageLayout from "../support/PageLayout.svelte";
-  import * as NoteService from "../NoteService";
-import NotesList from "../components/NotesList.svelte";
+  import NoteService from "../NoteService";
+  import NotesList from "../components/NotesList.svelte";
 
   let notes = [];
   

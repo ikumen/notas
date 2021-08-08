@@ -12,23 +12,23 @@ function handleResponse(res: Response) {
   throw new Error(errorMessage);
 }
 
-export async function remove(id: string) {
+async function remove(id: string) {
   return fetch(`${notes_base_uri}/${id}`, {
       method: 'DELETE'
     }).then(handleResponse);
 }
 
-export async function list() {
+async function list() {
   return fetch(`${notes_base_uri}`)
     .then(handleResponse);
 }
 
-export async function get(id: string) {
+async function get(id: string) {
   return fetch(`${notes_base_uri}/${id}`)
     .then(handleResponse);
 }
 
-export async function createOrUpdate(note) {
+async function createOrUpdate(note) {
   let url = notes_base_uri;
   let method = 'POST';
 
@@ -44,4 +44,11 @@ export async function createOrUpdate(note) {
       body: JSON.stringify(note)
     })
     .then(handleResponse);
+}
+
+export default {
+  get,
+  list,
+  createOrUpdate,
+  remove
 }
