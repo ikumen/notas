@@ -6,7 +6,7 @@
 <div>
   <ul>
     {#each notes as note}
-    <li>{notes.title}</li>
+    <li>{note.title}</li>
     {/each}
   </ul>
 </div>

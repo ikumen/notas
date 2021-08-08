@@ -22,7 +22,7 @@ async def list_notes(req: Request):
 
 async def create_note(req: Request):
     try:
-        data = await req.json()
+        data = {**(await req.json()), 'user': 'foobar', 'id': None}
         note = note_service.create(**data)
         return ApiJSONResponse(content=note)
     except Exception as ex:

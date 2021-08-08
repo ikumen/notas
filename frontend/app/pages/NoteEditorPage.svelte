@@ -5,6 +5,7 @@
   import Mode from "../components/Mode.svelte";
   import PrivacyToggle from "../components/note/PrivacyToggle.svelte";
   import LastUpdated from "../components/note/LastUpdated.svelte";
+  import { makeDebouncer } from "../utils";
 
   export let id;
 
@@ -58,7 +59,6 @@
     background-color: #eee;
     border-radius: 3px;
   }
-  
   .done:hover {
     background-color: #ddd;
     cursor: pointer;
