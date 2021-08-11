@@ -1,16 +1,15 @@
 <script language="typescript">
   import PageLayout from "../support/PageLayout.svelte";
-  import * as NoteService from "../NoteService";
+  import NoteService from "../NoteService";
   import { Editor, HtmlRenderer } from "../components/note";
   import Mode from "../components/Mode.svelte";
-  import PrivacyToggle from "../components/note/PrivacyToggle.svelte";
+  import PublishToggle from "../components/note/PublishToggle.svelte";
   import LastUpdated from "../components/note/LastUpdated.svelte";
-  import { makeDebouncer } from "../utils";
 
   export let id;
 
   let mode = 2;
-  let note = {id, title: '', tags: [], published: false, content: ''};
+  // let note;
 
   async function loadNote(id) {
     if (id === 'new') {
@@ -19,6 +18,8 @@
       note = await NoteService.get(id);
     }
   }
+
+  $: note = loadNote(id);    
 
 </script>
 
@@ -74,7 +75,7 @@
     <button class="done">Done</button>
   </div>
   <div slot="main" class="container">
-  {#await loadNote(id)}
+  {#await note}
     ..loading
   {:then} 
     {#if mode < 3}
@@ -89,7 +90,11 @@
   {/await}
   </div>
   <div slot="footer" class="meta">
-    <div><PrivacyToggle bind:ispublic={note.published} /></div>
-    <div><LastUpdated bind:updatedAt={note.updated_at} /></div>
+    {#await note}
+      <div></div>
+    {:then _note}
+      <div><PublishToggle {note} /></div>
+      <div><LastUpdated {note} /></div>
+    {/await}
   </div>
 </PageLayout>

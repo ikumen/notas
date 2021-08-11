@@ -1,7 +1,7 @@
 <script>
   import { toLocaleStringSupported } from "../../utils";
 
-  export let updatedAt;
+  export let note;
 
   const localeOptions = { 
     year: 'numeric', month: 'short', 
@@ -13,11 +13,11 @@
 
 <div class="mr2">
   Updated:
-  {#if updatedAt}
+  {#if note}
     {#if toLocaleStringSupported()}
-      {new Date(updatedAt).toLocaleString(navigator.languages[0], localeOptions)}
+      {new Date(note.updatedate).toLocaleString(navigator.languages[0], localeOptions)}
     {:else}
-      {new Date(updatedAt).toLocaleString()}
+      {new Date(note.updatedate).toLocaleString()}
     {/if}
   {:else}
     nothing saved
