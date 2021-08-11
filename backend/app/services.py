@@ -13,7 +13,7 @@ class NoteService(MongoCollection):
             user: str,
             title: str,
             content: str = None,
-            ispublic: bool = False,
+            published: bool = False,
             tags: List[str] = None,
             **kwargs # hacky but allows us to ignore extra fields
         ) -> dict:
@@ -21,7 +21,7 @@ class NoteService(MongoCollection):
         """
         utc_now = datetime.utcnow()
         return super().create(user=user, title=title, content=content,
-            ispublic=ispublic, tags=tags, created_at=utc_now, updated_at=utc_now)
+            published=published, tags=tags, createdate=utc_now, updatedate=utc_now)
 
     @validate_arguments    
     def update(self, 
@@ -29,28 +29,28 @@ class NoteService(MongoCollection):
             user: str,
             title: str = None,
             content: str = None,
-            ispublic: bool = None,
+            published: bool = None,
             tags: List[str] = None, 
             **kwargs
         ) -> Optional[dict]:
         """Update note with given id. Returns the id and datetime of
         the updated note.
         """
-        updated_at = datetime.utcnow()
-        note = dict(id=id, user=user, updated_at=updated_at)
+        updatedate = datetime.utcnow()
+        note = dict(id=id, user=user, updatedate=updatedate)
 
         if title is not None:
             note['title'] = title
         if content is not None:
             note['content'] = content
-        if ispublic is not None:
-            note['ispublic'] = ispublic
+        if published is not None:
+            note['published'] = published
         if tags is not None:
             note['tags'] = tags
 
         is_updated = super().update(**note)
         if is_updated:
-            return dict(id=id, updated_at=updated_at)
+            return note
         return None 
 
 

@@ -5,6 +5,8 @@ interface Note {
   category?: string,
   content?: string,
   published: boolean,
+  createdate?: string,
+  updatedate?: string,
   tags: Array<string>
 };
 
