@@ -1,11 +1,21 @@
 <script>
-import { Link } from "svelte-routing";
+  import { link } from "svelte-routing";
 
   export let notes;
-  //export let onRemove;
+  export let onDeleteNote;
+
+  async function deleteNote(evt, note) {
+    evt.preventDefault();
+    if (confirm(`Delete "${note.title}"?`)) {
+      onDeleteNote(note.id);
+    }
+  }
 </script>
 
 <style>
+  .note-list {
+    padding: 0;
+  }
   .note-item {
     display: flex;
     justify-content: space-between;
@@ -13,13 +23,13 @@ import { Link } from "svelte-routing";
 </style>
 
 <div>
-  <ul>
+  <ul class="note-list">
     {#each notes as note}
     <li class="note-item">
-      <Link to={`/notes/${note.id}`}>{note.title}</Link>
+      <a href={`/notes/${note.id}`} use:link>{note.title}</a>
       <div>
-        <span>Delete</span>
-        <span>edit</span>
+        <a href={`/notes/${note.id}/delete`} on:click={(evt) => deleteNote(evt, note)}>Delete</a>
+        <a href={`/notes/${note.id}/edit`} use:link>Edit</a>
       </div>
     </li>
     {/each}

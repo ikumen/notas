@@ -16,8 +16,6 @@
         return tags;
       }, []);
   }
-
-  console.log("....hmm")
 </script>
 
 <style>

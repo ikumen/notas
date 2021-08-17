@@ -22,8 +22,8 @@ async def list_notes(req: Request):
 
 async def create_note(req: Request):
     try:
-        data = {**(await req.json()), 'user': 'foobar', 'id': None}
-        note = note_service.create(**data)
+        data = await req.json()
+        note = note_service.create(id=None, user='foobar', **data)
         return ApiJSONResponse(content=note)
     except Exception as ex:
         _log_exception(ex)
@@ -35,7 +35,7 @@ async def update_note(req: Request):
     try:
         id = req.path_params['id']
         data = await req.json()
-        updated_note = note_service.update(id=id, **data)
+        updated_note = note_service.update(id=id, user='foobar', **data)
     except Exception as ex:
         _log_exception(ex)
         raise HTTPException(status_code=400)

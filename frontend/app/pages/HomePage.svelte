@@ -9,6 +9,12 @@
     notes = await NoteService.list();
   }
 
+  async function deleteNote(id) {
+    NoteService.remove(id).then(() => {
+      notes = notes.filter(note => note.id !== id);
+    });
+  }
+
 </script>
 
 
@@ -17,7 +23,7 @@
     {#await listNotes()}
       ...loading notes
     {:then} 
-      <NotesList bind:notes={notes} />
+      <NotesList bind:notes={notes} onDeleteNote={deleteNote} />
     {/await}
   </div>
 </PageLayout>

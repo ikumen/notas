@@ -1,8 +1,14 @@
 const notes_base_uri = '/api/notes';
 
-function handleResponse(res: Response) {
-  if (res.ok)
-    return res.json();
+async function handleResponse(res: Response) {
+  if (res.ok) {
+    try {
+      return await res.json();
+    } catch (err) {
+      // Handle 204
+      return Promise.resolve();
+    }
+  }
 
   let errorMessage = 'Sorry we could not complete request, please try again.'
   if (res.status === 404)
@@ -29,20 +35,19 @@ async function get(id: string) {
 }
 
 async function createOrUpdate(note) {
-  let url = notes_base_uri;
-  let method = 'POST';
-
-  // if existing note, do update
-  if (note.id && note.id !== 'new') {
-    url = `${url}/${note.id}`;
-    method = 'PUT';
-  }
+  const [ url, method ] = (!note.id || note.id === 'new') 
+    ? [notes_base_uri, 'POST']
+    : [`${notes_base_uri}/${note.id}`, 'PUT'];
 
   return fetch(url, {
       method,
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(note)
-    })
+      body: JSON.stringify({
+        title: note.title,
+        content: note.content,
+        tags: note.tags,
+        published: note.published
+      })})
     .then(handleResponse);
 }
 
