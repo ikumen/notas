@@ -2,7 +2,7 @@
   import { link } from "svelte-routing";
 
   export let enableFooter = true;
-  export let enableHeader = true;
+  export let showProfileInHeader = true;
 </script>
 
 <style>
@@ -13,7 +13,7 @@
     align-content: stretch;
     /* height: calc(100vh - 60px); */
     height: 100%;
-    padding: 0 10px;
+    padding: 0;
     max-width: 100%;
     margin: 0 auto;
     background-color: #eee;
@@ -24,6 +24,12 @@
     display: flex;
     align-items: center;
     font-size: 1rem;
+    background-color: #eee;
+    padding: 0 10px;
+  }
+
+  .profile-header {
+    background-color: #fff;
   }
 
   main {
@@ -32,6 +38,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 4rem;
+    padding: 0 10px;
   }
 
   footer {
@@ -43,17 +50,13 @@
     font-size: 1rem;
   }
   
-  /* .logo {
-    flex-grow: 0;
-  }
-  .logo  */
   .notas {
     flex-grow: 0;
     background-color: #000;
     color: #fff;
     font-size: 1.2rem;
     font-weight: 800;
-    padding: 6px;
+    padding: 4px 6px;
     border-radius: 3px;
     text-decoration: none;
     margin: 0;
@@ -72,17 +75,19 @@
 </style>
 
 <div class="layout">
-  {#if enableHeader}
-  <header>
+  <header class:profile-header={showProfileInHeader}>
     <a class="notas" href="/" use:link>NOTAS</a> 
     <div class="hdr-left">
       <slot name="hdr-left"></slot>
     </div>
     <div class="hdr-right">
-      <slot name="hdr-right"></slot>
+      {#if showProfileInHeader}
+        <a href="/notes/new" use:link>Create Note</a>
+      {:else}
+        <slot name="hdr-right"></slot>
+      {/if}
     </div>
   </header> 
-  {/if}
   <main>
     <slot name="main"/>
   </main>

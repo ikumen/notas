@@ -1,6 +1,5 @@
 <script>
   export let note;
-  console.log(note)
 </script>
 
 <style>
