@@ -10,15 +10,15 @@
     flex-wrap: wrap;
     margin: 1rem 0;
   }
+
   .tag {
     margin-right: 10px;
   }
 </style>
 
-<div class="tags">
+<div class="tags noscroll">
 {#each tags as tag}
   <span class="tag f5"><span class="silver">#</span><Link class="hover link" to={`/bits/tagged/${tag}`}>{tag}</Link></span>  
 {/each}
-&nbsp;
 </div>  
 

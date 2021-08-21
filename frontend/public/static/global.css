@@ -10,7 +10,8 @@ html {
 
 body {
   font-family: system-ui, sans-serif;
-  font-size: 1.2rem;
+  /* font-family: 'Roboto Mono', monospace; */
+  font-size: 1.1rem;
 }
 
 main {
@@ -34,3 +35,7 @@ img {
   border-style: none;
 }
 
+.noscroll {
+  word-break: break-all;
+  word-break: break-word;
+}

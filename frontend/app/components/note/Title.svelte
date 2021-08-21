@@ -9,5 +9,5 @@
   }
 </style>
 
-<h1 class="title">{title}&nbsp;</h1>
+<h1 class="title noscroll">{title}</h1>
 

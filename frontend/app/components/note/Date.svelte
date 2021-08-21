@@ -16,6 +16,7 @@
 
 <style>
   .date {
+    display: inline;
     font-size: 1rem;
     color: #666;
   }

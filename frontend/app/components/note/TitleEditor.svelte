@@ -4,20 +4,25 @@
 </script>
 
 <style>
+  .title[contenteditable]:empty::before {
+    content: attr(data-placeholder);
+    color: gray;
+  }
+
   .title {
-    display: block;
     font-size: 2rem;
     font-weight: 800;
-    outline: none;
     border: none;
-    margin: 1rem 0;
     width: 99%;
+    outline: none;
   }
 
 </style>
 
-<input bind:value={title} class="title" 
-  placeholder={placeholder}
+<h1 role="textbox" class="title" 
+  contenteditable="true"
+  bind:textContent={title} 
+  data-placeholder={placeholder}
 />
 
 

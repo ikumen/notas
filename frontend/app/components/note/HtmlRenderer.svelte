@@ -10,21 +10,16 @@
 <style>
   .preview {
     flex: 1;
-    background-color: lightskyblue;
     margin: 0;
-    padding: 0 14px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+    padding: 0;
     background-color: #fff;
     overflow: auto;
   }
+
 </style>
 
 <div class="preview">
   <Title bind:title={note.title} />
   <Tags bind:tags={note.tags} />
-  <div>
-    <Date value={note.createdate} />
-  </div>
   <Content bind:content={note.content}  />
 </div>
