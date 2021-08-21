@@ -5,6 +5,7 @@
   import TitleEditor from "./TitleEditor.svelte";
   import NoteService from "../../NoteService";
   import { afterUpdate, onDestroy, onMount } from "svelte";
+import Date from "./Date.svelte";
 
   export let note;
   let saveTimer;
@@ -65,12 +66,9 @@
 <style>
   .editor {
     margin: 0;
-    padding: 0 14px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    background-color: #fff;
     flex: 1;
     overflow: auto;
+    background-color: #FFFCEB;
   }
 </style>
 

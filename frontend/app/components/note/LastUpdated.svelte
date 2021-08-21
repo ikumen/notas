@@ -11,15 +11,21 @@
 
 </script>
 
-<div class="mr2">
-  Updated:
-  {#if note}
+<style>
+  .lastupdated {
+    color: #aaa;
+  }
+</style>
+
+<div class="lastupdated">
+  Last updated:
+  {#if note && note.updatedate}
     {#if toLocaleStringSupported()}
       {new Date(note.updatedate).toLocaleString(navigator.languages[0], localeOptions)}
     {:else}
       {new Date(note.updatedate).toLocaleString()}
     {/if}
   {:else}
-    nothing saved
+    New
   {/if}
 </div>

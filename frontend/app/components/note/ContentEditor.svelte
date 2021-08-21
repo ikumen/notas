@@ -58,14 +58,16 @@
     padding: 0;
     border: 0;
     outline: none;
+    background-color: inherit;
   }  
 </style>
 
-<div class="grow-wrap">
+<div class="grow-wrap noscroll">
   <textarea id="text"
     bind:this={textAreaEl}
     bind:value={content}
     placeholder="Write your note here..."
     onInput="this.parentNode.dataset.replicatedValue = this.value" 
+    wrap="soft"
     name="text" />
 </div>

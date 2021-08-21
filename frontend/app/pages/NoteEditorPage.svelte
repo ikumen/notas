@@ -31,12 +31,14 @@ import { link } from "svelte-routing";
     padding: 0;
     margin: 0;
   }
+  
   .meta {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   .modes {
     display: flex;
     justify-content: flex-end;
@@ -44,9 +46,11 @@ import { link } from "svelte-routing";
   }
 
   .divider {
-    width: 1px;
+    width: 14px;
+    border-left: 1px solid #ccc;
     margin-left: 1px;
     margin-right: 1px;
+    background-color: #fff;
   }
 
   .done {
@@ -55,14 +59,9 @@ import { link } from "svelte-routing";
     border: none;
     color: #111;
     font-weight: 400;
-    padding: 6px 8px;
-    border: 2px solid #ccc;
+    font-size: 1.1rem;
+    padding: 4px 10px;
     background-color: #eee;
-    border-radius: 3px;
-  }
-  .done:hover {
-    background-color: #ddd;
-    cursor: pointer;
   }
 </style>
 
@@ -72,7 +71,7 @@ import { link } from "svelte-routing";
     <Mode bind:mode={mode} value={2} name="Split" />
     <Mode bind:mode={mode} value={3} name="Preview" />
 
-    <a href="/" use:link class="done">Done</a>
+    <a href="/" use:link class="done">X</a>
   </div>
   <div slot="main" class="container">
   {#await note}

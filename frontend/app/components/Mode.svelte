@@ -8,14 +8,19 @@
   .unselected {
     color: #aaa;
   }
+
   .selected, .unselected:hover {
-    border-bottom: solid 2px #357EDD;
-    color: #333;
+    border-bottom: solid 2px rgb(0, 0, 238);
+    color: #111;
   }
+
   .mode:hover {
     cursor: pointer;
   }
+
   .mode {
+    font-size: 1rem;
+    padding: 2px 0;
     margin-right: 14px;
   }
 </style>

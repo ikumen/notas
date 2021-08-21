@@ -24,10 +24,10 @@
     color: gray;
   }
   .tags {
-    /* hack to bump codemirror down a bit */
     width: 100%;
     display: block;
-    margin: 1.3rem 0;
+    margin: 1rem 0;
+    outline: none;
   }
 </style>
 

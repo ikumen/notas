@@ -20,6 +20,4 @@ import PageLayout from "../support/PageLayout.svelte";
     <HtmlRenderer {note}/>  
   {/await}
   </div>
-  <div slot="footer" class="meta">
-  </div>
 </PageLayout>

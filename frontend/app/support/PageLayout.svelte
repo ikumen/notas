@@ -9,74 +9,76 @@
   .layout {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
     align-content: stretch;
-    /* height: calc(100vh - 60px); */
+    justify-content: space-between;
     height: 100%;
     padding: 0;
-    max-width: 100%;
+    max-width: 1100px;
     margin: 0 auto;
-    background-color: #eee;
+  }
+
+  header, main, footer {
+    width: 100%;
+  }
+
+  header, footer {
+    height: 50px;
+    font-size: .9rem;
+    display: flex;
+    align-content: center;
+  }
+
+  footer section, header section {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
   }
 
   header {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    background-color: #eee;
-    padding: 0 10px;
+    border-bottom: 1px solid #ddd;
   }
 
-  .profile-header {
-    background-color: #fff;
+  .branding {
+    flex-grow: 0;
+    padding: 2px 0px;
+    margin: 0;
+  }
+
+  .branding a {
+    line-height: 1.6rem;
+    text-decoration: none;
+    color: #111;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 2px 0;
+    border-bottom: solid 3px rgb(0, 0, 238);
   }
 
   main {
+    padding-top: 20px;
     flex: 1;
     overflow: auto;
     display: flex;
     flex-direction: column;
-    margin: 0 4rem;
-    padding: 0 10px;
-  }
-
-  footer {
-    height: 50px;
-    background-color: #eee;
-    display: flex;
-    align-items: center;
-    margin: 0 4rem;
-    font-size: 1rem;
   }
   
-  .notas {
-    flex-grow: 0;
-    background-color: #000;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 800;
-    padding: 4px 6px;
-    border-radius: 3px;
-    text-decoration: none;
-    margin: 0;
-    line-height: 1.6rem;
-  }
-
   .hdr-left, .hdr-right {
     flex-grow: 2;
   }
 
-  @media (max-width: 1024px) {
-    main, footer {
-      margin: 0;
+  @media (max-width: 1110px) {
+    .layout {
+      padding: 0 14px;
     }
   }
 </style>
 
 <div class="layout">
-  <header class:profile-header={showProfileInHeader}>
-    <a class="notas" href="/" use:link>NOTAS</a> 
+  <header>
+    <section>
+    <div class="branding"><a href="/" use:link>NOTAS</a></div>
     <div class="hdr-left">
       <slot name="hdr-left"></slot>
     </div>
@@ -87,6 +89,7 @@
         <slot name="hdr-right"></slot>
       {/if}
     </div>
+    </section>
   </header> 
   <main>
     <slot name="main"/>
@@ -94,7 +97,15 @@
 
   {#if enableFooter}
   <footer>
-    <slot name="footer"/>
+    <section>
+      <slot name="footer">
+        <div>
+        </div>
+        <div>
+          <a href="https://github.com/komyuniti/notas">about</a>
+        </div>
+      </slot>
+    </section>
   </footer>
   {/if}
 </div>
