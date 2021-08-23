@@ -13,6 +13,7 @@
 
   .tag {
     margin-right: 10px;
+    color: #aaa;
   }
 </style>
 

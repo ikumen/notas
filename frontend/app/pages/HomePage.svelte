@@ -23,6 +23,7 @@
     {#await listNotes()}
       ...loading notes
     {:then} 
+      <h2>Notes</h2>
       <NotesList bind:notes={notes} onDeleteNote={deleteNote} />
     {/await}
   </div>
