@@ -1,6 +1,5 @@
 <script language="typescript">
   import Content from "./Content.svelte";
-  import Date from "./Date.svelte";
   import Tags from "./Tags.svelte";
   import Title from "./Title.svelte";
   
@@ -8,7 +7,7 @@
 </script>
 
 <style>
-  .preview {
+  .rendered {
     flex: 1;
     margin: 0;
     padding: 0;
@@ -18,8 +17,9 @@
 
 </style>
 
-<div class="preview">
+<div class="rendered">
   <Title bind:title={note.title} />
   <Tags bind:tags={note.tags} />
+  <slot name="meta" />
   <Content bind:content={note.content}  />
 </div>
